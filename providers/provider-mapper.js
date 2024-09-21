@@ -1,12 +1,12 @@
 const {
-  SITEWIRE_TOPIC,
-  SITEWIRE_SECRET,
+  OP_SITEWIRE_TOPIC,
+  OP_SITEWIRE_SECRET,
 } = process.env;
 
 module.exports = {
-  sitewire: {
+  "op-sitewire": {
     authenticatorName: 'verifySitewireSignature',
-    topicName: SITEWIRE_TOPIC,
-    secret: SITEWIRE_SECRET,
+    topicName: OP_SITEWIRE_TOPIC,
+    secret: OP_SITEWIRE_SECRET,
   },
 };

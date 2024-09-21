@@ -26,7 +26,7 @@ describe(`${path.basename(__filename)} - Test Suite`, () => {
     });
 
     it('should return 200 when the request is valid', async () => {
-      const provider = 'sitewire';
+      const provider = 'op-sitewire';
       const providerMap = mapper[provider];
 
       const authenticatorStub = sinon.stub(authenticators, providerMap.authenticatorName).resolves();
@@ -56,7 +56,7 @@ describe(`${path.basename(__filename)} - Test Suite`, () => {
     });
 
     it('should return 403 when authentication fails', async () => {
-      const provider = 'sitewire';
+      const provider = 'op-sitewire';
       const providerMap = mapper[provider];
 
       const error = new Error('Invalid webhook signature');
@@ -73,7 +73,7 @@ describe(`${path.basename(__filename)} - Test Suite`, () => {
     });
 
     it('should return 500 when an internal server error occurs', async () => {
-      const provider = 'sitewire';
+      const provider = 'op-sitewire';
       const providerMap = mapper[provider];
 
       sinon.stub(authenticators, providerMap.authenticatorName).resolves();
@@ -91,7 +91,7 @@ describe(`${path.basename(__filename)} - Test Suite`, () => {
     });
 
     it('should return 200 for valid payload', async () => {
-      const provider = 'sitewire';
+      const provider = 'op-sitewire';
       const providerMap = mapper[provider];
 
       sinon.stub(authenticators, providerMap.authenticatorName).resolves();

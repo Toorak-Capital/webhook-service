@@ -45,5 +45,5 @@ Variable | Example | Description | Requirement for Local
 NODE_ENV | 'dev' | Working Environment | Required
 PORT | 3000 | Port on which the service will run | Optional (defaults to 3000)
 PROJECT_ID | 'projectname' | GCP project name | Required
-SITEWIRE_SECRET | 'your-secret-key' | Secret key used for validating Sitewire webhooks | Required
-SITEWIRE_TOPIC | 'sitewire-topic-name' | GCP Pub/Sub topic name for publishing Sitewire webhook events | Required
+OP_SITEWIRE_SECRET | 'your-secret-key' | Secret key used for validating Sitewire webhooks | Required
+OP_SITEWIRE_TOPIC | 'sitewire-topic-name' | GCP Pub/Sub topic name for publishing Sitewire webhook events | Required
