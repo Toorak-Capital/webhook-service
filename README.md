@@ -1,5 +1,17 @@
 # Toorak Capital Partners - Webhook Service
-A Fastify-based webhook gateway designed to securely receive, validate, and process incoming webhook events. It supports signature validation through configurable secret keys and integrates seamlessly with Pub/Sub systems to publish validated data
+A Fastify-based webhook gateway designed to securely receive, validate, and process incoming webhook events. It supports signature validation through configurable secret keys and publishes messages via Pubsub
+
+## Status - Master Branch
+[![Quality Gate Status](https://sonarqube.roemanu.io/api/project_badges/measure?project=Toorak-Capital_webhook-service_AYd6CvDVK-P1eLUtLYNc&metric=alert_status&token=sqb_ad50d4de19c40c19ee44411fa366b4c099801299)](https://sonarqube.roemanu.io/dashboard?id=Toorak-Capital_webhook-service_AYd6CvDVK-P1eLUtLYNc)
+[![Coverage](https://sonarqube.roemanu.io/api/project_badges/measure?project=Toorak-Capital_webhook-service_AYd6CvDVK-P1eLUtLYNc&metric=coverage&token=sqb_ad50d4de19c40c19ee44411fa366b4c099801299)](https://sonarqube.roemanu.io/dashboard?id=Toorak-Capital_webhook-service_AYd6CvDVK-P1eLUtLYNc)
+[![Bugs](https://sonarqube.roemanu.io/api/project_badges/measure?project=Toorak-Capital_webhook-service_AYd6CvDVK-P1eLUtLYNc&metric=bugs&token=sqb_ad50d4de19c40c19ee44411fa366b4c099801299)](https://sonarqube.roemanu.io/dashboard?id=Toorak-Capital_webhook-service_AYd6CvDVK-P1eLUtLYNc)
+[![Code Smells](https://sonarqube.roemanu.io/api/project_badges/measure?project=Toorak-Capital_webhook-service_AYd6CvDVK-P1eLUtLYNc&metric=code_smells&token=sqb_ad50d4de19c40c19ee44411fa366b4c099801299)](https://sonarqube.roemanu.io/dashboard?id=Toorak-Capital_webhook-service_AYd6CvDVK-P1eLUtLYNc)
+
+## Status - Develop Branch
+[![Quality Gate Status](https://sonarqube.roemanu.io/api/project_badges/measure?branch=develop&project=Toorak-Capital_webhook-service_AYd6CvDVK-P1eLUtLYNc&metric=alert_status&token=sqb_ad50d4de19c40c19ee44411fa366b4c099801299)](https://sonarqube.roemanu.io/dashboard?id=Toorak-Capital_webhook-service_AYd6CvDVK-P1eLUtLYNc&branch=develop)
+[![Coverage](https://sonarqube.roemanu.io/api/project_badges/measure?branch=develop&project=Toorak-Capital_webhook-service_AYd6CvDVK-P1eLUtLYNc&metric=coverage&token=sqb_ad50d4de19c40c19ee44411fa366b4c099801299)](https://sonarqube.roemanu.io/dashboard?id=Toorak-Capital_webhook-service_AYd6CvDVK-P1eLUtLYNc&branch=develop)
+[![Bugs](https://sonarqube.roemanu.io/api/project_badges/measure?branch=develop&project=Toorak-Capital_webhook-service_AYd6CvDVK-P1eLUtLYNc&metric=bugs&token=sqb_ad50d4de19c40c19ee44411fa366b4c099801299)](https://sonarqube.roemanu.io/dashboard?id=Toorak-Capital_webhook-service_AYd6CvDVK-P1eLUtLYNc&branch=develop)
+[![Code Smells](https://sonarqube.roemanu.io/api/project_badges/measure?branch=develop&project=Toorak-Capital_webhook-service_AYd6CvDVK-P1eLUtLYNc&metric=code_smells&token=sqb_ad50d4de19c40c19ee44411fa366b4c099801299)](https://sonarqube.roemanu.io/dashboard?id=Toorak-Capital_webhook-service_AYd6CvDVK-P1eLUtLYNc&branch=develop)
 
 # Libraries and Technologies
 *See detailed info about our tech stack [here](docs/libraries-and-technologies.md)*
@@ -19,6 +31,12 @@ Within dev container, run using VS Code `Run and Debug`
 # from terminal
 NODE_ENV=dev nodemon server.js
 ```
+
+## Registering a new webhook provider
+1. Add authenticator in ./providers/provider-authentication.js
+2. Create config using authenticator name and intended topic name within ./providers/provider-matter.js. The name of the config's parent property should be the provider's name, which is the same value that will be used in the URL's provider path param during requests.
+3. Add the new topic environment variable to project environment and start project
+
 
 ## Environment Setup
 Variable | Example | Description | Requirement for Local

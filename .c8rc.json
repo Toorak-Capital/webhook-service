@@ -1,0 +1,29 @@
+{
+    "all": true,
+    "cache": false,
+    "lines": 80,
+    "branches": 80,
+    "statements": 80,
+    "watermarks": {
+        "lines": [70, 80],
+        "functions": [70, 80],
+        "branches": [70, 80],
+        "statements": [70, 80]
+    },
+    "reporter": [
+        "lcov",
+        "html",
+        "text",
+        "text-summary"
+    ],
+    "exclude": [
+        ".*",
+        "test/**/*",
+        "providers/provider-mapper.js",
+        "config/**/*",
+        "coverage/**/*",
+        "**/index.js",
+        ".**/*"
+    ],
+    "check-coverage": true
+}

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# run linter
+echo "running linter from $(pwd)"
+npm run lint || exit 1
+npm test || exit 1
