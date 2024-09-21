@@ -8,12 +8,11 @@ describe(`${path.basename(__filename)} - verifySitewireSignature`, () => {
   let svixAuthStub;
   let getSvixAuthStub;
   let sandbox;
-
   const SITEWIRE_SECRET = 'mock-secret';
+  const providerMap = { secret: SITEWIRE_SECRET };
 
   before(() => {
     sandbox = sinon.createSandbox();
-    process.env.SITEWIRE_SECRET = SITEWIRE_SECRET;
   });
 
   beforeEach(() => {
@@ -31,6 +30,7 @@ describe(`${path.basename(__filename)} - verifySitewireSignature`, () => {
     const request = {
       body: { data: 'test data' },
       headers: { 'x-svix-signature': 'mock-signature' },
+      providerMap,
     };
     const stringifiedBody = JSON.stringify(request.body);
 
@@ -47,6 +47,7 @@ describe(`${path.basename(__filename)} - verifySitewireSignature`, () => {
     const request = {
       body: { data: 'test data' },
       headers: { 'x-svix-signature': 'mock-signature' },
+      providerMap,
     };
     const stringifiedBody = JSON.stringify(request.body);
 

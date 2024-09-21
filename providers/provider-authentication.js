@@ -8,9 +8,11 @@ const svix = require('../config/svix');
  * @returns {object | string} request body
  */
 function verifySitewireSignature(request) {
-  const svixAuth = svix.getSvixAuth(process.env.SITEWIRE_SECRET);
-  const body = JSON.stringify(request.body);
-  return svixAuth.verify(body, request.headers);
+  const { body, headers, providerMap } = request;
+  const { secret } = providerMap;
+  const svixAuth = svix.getSvixAuth(secret);
+  const bodyStr = JSON.stringify(body);
+  return svixAuth.verify(bodyStr, headers);
 }
 
 module.exports = {

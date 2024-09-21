@@ -34,8 +34,9 @@ NODE_ENV=dev nodemon server.js
 
 ## Registering a new webhook provider
 1. Add authenticator in ./providers/provider-authentication.js
-2. Create config using authenticator name and intended topic name within ./providers/provider-matter.js. The name of the config's parent property should be the provider's name, which is the same value that will be used in the URL's provider path param during requests.
-3. Add the new topic environment variable to project environment and start project
+2. Create config using authenticator name, secret and intended topic name within ./providers/provider-matter.js. The name of the config's parent property should be the provider's name, which is the same value that will be used in the URL's provider path param during requests.
+3. Add the appropriate unit testing for any added authenticator functions.
+4. Add the new topic environment variables to project environment and start project
 
 
 ## Environment Setup
