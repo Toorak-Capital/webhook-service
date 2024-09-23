@@ -69,7 +69,7 @@ const buildFastify = async () => {
     logger.info(`Loaded route: ${nRoute.method}: ${nRoute.url}`);
   });
 
-  fastify.get(`${basePath}/health`, (request, reply) => {
+  fastify.get(`${baseName}/health`, (request, reply) => {
     reply.code(200).send();
   });
 

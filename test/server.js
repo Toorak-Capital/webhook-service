@@ -11,7 +11,7 @@ describe('Fastify Server Tests', () => {
   it('should return 200 for health check', async () => {
     const response = await fastify.inject({
       method: 'GET',
-      url: '/api/v1/webhook/health',
+      url: '/webhook/health',
     });
 
     expect(response.statusCode).to.equal(200);
