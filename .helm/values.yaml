@@ -44,28 +44,28 @@ imagePullPolicy: Always
 environmentVariable:
 
 #################Datadog agent values #############
-# - name: DD_AGENT_HOST
-#   valueFrom:
-#     fieldRef:
-#       fieldPath: status.hostIP
-# - name: DD_ENV
-#   valueFrom:
-#     fieldRef:
-#       fieldPath: metadata.labels['tags.datadoghq.com/env']
-# - name: DD_SERVICE
-#   valueFrom:
-#     fieldRef:
-#       fieldPath: metadata.labels['tags.datadoghq.com/service']
-# - name: DD_VERSION
-#   valueFrom:
-#     fieldRef:
-#       fieldPath: metadata.labels['tags.datadoghq.com/version']
-# - name: DD_LOGS_INJECTION
-#   value: "true"
-# - name: DD_TRACE_SAMPLE_RATE
-#   value: "1"
-# - name: DD_PROFILING_ENABLED
-#   value: "false"
+  - name: DD_AGENT_HOST
+    valueFrom:
+      fieldRef:
+        fieldPath: status.hostIP
+  - name: DD_ENV
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.labels['tags.datadoghq.com/env']
+  - name: DD_SERVICE
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.labels['tags.datadoghq.com/service']
+  - name: DD_VERSION
+    valueFrom:
+      fieldRef:
+        fieldPath: metadata.labels['tags.datadoghq.com/version']
+  - name: DD_LOGS_INJECTION
+    value: "true"
+  - name: DD_TRACE_SAMPLE_RATE
+    value: "1"
+  - name: DD_PROFILING_ENABLED
+    value: "false"
 
 
 ########### service values ###########
