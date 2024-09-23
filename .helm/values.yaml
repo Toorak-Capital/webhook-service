@@ -15,14 +15,13 @@ container:
   port: http
   containerPort: 3000
 
-
 readiness:
   httpGet: # make an HTTP request
     port: 3000 # port to use
     path: /webhook/health # endpoint to hit
     scheme: HTTP # or HTTPS
-  initialDelaySeconds: 120 # how long to wait before checking
-  periodSeconds: 5 # how long to wait between checks
+  initialDelaySeconds: 30 # how long to wait before checking
+  periodSeconds: 10 # how long to wait between checks
   successThreshold: 1 # how many successes to hit before accepting
   failureThreshold: 2 # how many failures to accept before failing
   timeoutSeconds: 10 # how long to wait for a responses
@@ -32,11 +31,12 @@ liveness:
     port: 3000 # port to use
     path: /webhook/health # endpoint to hit
     scheme: HTTP # or HTTPS
-  initialDelaySeconds: 120 # how long to wait before checking
-  periodSeconds: 5 # how long to wait between checks
+  initialDelaySeconds: 30 # how long to wait before checking
+  periodSeconds: 3 # how long to wait between checks
   successThreshold: 1 # how many successes to hit before accepting
   failureThreshold: 2 # how many failures to accept before failing
-  timeoutSeconds: 10 # how long to wait for a response
+  timeoutSeconds: 2 # how long to wait for a response
+
 
 imagePullPolicy: Always
 
