@@ -2,6 +2,7 @@ const proxyquire = require('proxyquire').noCallThru();
 
 /**
  * Retrieves a proxified server object for testing by stubbing controller logic.
+ *
  * @param {string} routePath - The path to the route file to be stubbed.
  * @param {string} controllerPath - The route's path to the controller file to be stubbed.
  * @param {object} controllerStub - An object containing controller stub properties

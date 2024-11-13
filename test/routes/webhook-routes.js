@@ -29,7 +29,10 @@ describe(`${path.basename(__filename)} - Test Suite`, () => {
       const provider = 'op-sitewire';
       const providerMap = mapper[provider];
 
-      const authenticatorStub = sinon.stub(authenticators, providerMap.authenticatorName).resolves();
+      const authenticatorStub = sinon.stub(
+        authenticators,
+        providerMap.authenticatorName,
+      ).resolves();
       const publishMessageStub = sinon.stub(controllers, 'publishMessage').resolves();
 
       const response = await fastify.inject({

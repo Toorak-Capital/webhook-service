@@ -9,10 +9,16 @@ const service = require('../services/publish-service');
  * @returns {Promise} pubsub success object
  */
 function publishMessage(request) {
-  const { body } = request;
+  const { body, params } = request;
   const { topicName } = request.providerMap;
 
-  return service.publishMessageToPubSub(body, topicName);
+  return service.publishMessageToPubSub(
+    {
+      body,
+      params,
+    },
+    topicName,
+  );
 }
 
 module.exports = {
