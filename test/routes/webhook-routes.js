@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const sinon = require('sinon');
 const path = require('path');
 
-const buildFastify = require('../../server');
+const server = require('../../server');
 const mapper = require('../../providers/provider-mapper');
 const authenticators = require('../../providers/provider-authentication');
 const controllers = require('../../controllers');
@@ -13,7 +13,7 @@ describe(`${path.basename(__filename)} - Test Suite`, () => {
     let fastify;
 
     before(async () => {
-      fastify = await buildFastify();
+      fastify = await server.buildFastify();
     });
 
     beforeEach(() => {

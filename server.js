@@ -5,9 +5,10 @@ const metricsPlugin = require('fastify-metrics');
 const fastifySwagger = require('@fastify/swagger');
 const fastifySwaggerUI = require('@fastify/swagger-ui');
 const info = require('./package.json');
-const { Schemas, logger } = require('./common');
+const common = require('./common');
 const Routes = require('./routes');
 
+const { Schemas, logger } = common;
 const baseName = '/webhook';
 const basePath = `/api/v1${baseName}`;
 
@@ -80,18 +81,27 @@ const buildFastify = async () => {
   return fastify;
 };
 
-if (require.main === module) {
-  (async () => {
-    const app = await buildFastify();
+const startServer = async () => {
+  const app = await exports.buildFastify();
 
-    app.listen({ port: process.env.PORT || 3000, host: '0.0.0.0' }, (err, address) => {
-      if (err) {
-        logger.error(err);
-        process.exit(1);
-      }
-      logger.info(`Server is now listening on ${address}`);
-    });
-  })();
-}
+  app.listen({ port: process.env.PORT || 3000, host: '0.0.0.0' }, (err, address) => {
+    if (err) {
+      logger.error(err);
+      process.exit(1);
+    }
+    logger.info(`Server is now listening on ${address}`);
+  });
+};
 
-module.exports = buildFastify;
+module.exports = {
+  buildFastify,
+  startServer,
+};
+
+exports = module.exports;
+
+(async () => {
+  if (require.main === module) {
+    await startServer();
+  }
+})();
