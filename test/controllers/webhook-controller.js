@@ -27,6 +27,7 @@ describe(`${path.basename(__filename)} - Test Suite`, async () => {
     const request = {
       body: { data: 'test data' },
       providerMap: { topicName: 'test-topic' },
+      params: { provider: 'test-provider' },
     };
 
     pubSubStub.resolves('mockMessageId');
@@ -34,13 +35,17 @@ describe(`${path.basename(__filename)} - Test Suite`, async () => {
     const result = await controller.publishMessage(request);
 
     expect(pubSubStub.calledOnce).to.be.true;
-    expect(pubSubStub.calledWith(request.body, 'test-topic')).to.be.true;
+    expect(pubSubStub.calledWith({
+      body: request.body,
+      params: request.params,
+    }, 'test-topic')).to.be.true;
     expect(result).to.equal('mockMessageId');
   });
 
   it('should handle errors from the pubSub service', async () => {
     const request = {
       body: { data: 'test data' },
+      params: { provider: 'test-provider' },
       providerMap: { topicName: 'test-topic' },
     };
 
@@ -50,6 +55,9 @@ describe(`${path.basename(__filename)} - Test Suite`, async () => {
     await expect(controller.publishMessage(request)).to.be.rejectedWith(error);
 
     expect(pubSubStub.calledOnce).to.be.true;
-    expect(pubSubStub.calledWith(request.body, 'test-topic')).to.be.true;
+    expect(pubSubStub.calledWith({
+      body: request.body,
+      params: request.params,
+    }, 'test-topic')).to.be.true;
   });
 });

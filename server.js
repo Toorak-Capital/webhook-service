@@ -78,15 +78,15 @@ const buildFastify = async () => {
   });
 
   return fastify;
-}
+};
 
 if (require.main === module) {
   (async () => {
-    const fastify = await buildFastify();
+    const app = await buildFastify();
 
-    fastify.listen({ port: process.env.PORT || 3000, host: '0.0.0.0' }, (err, address) => {
+    app.listen({ port: process.env.PORT || 3000, host: '0.0.0.0' }, (err, address) => {
       if (err) {
-        fastify.log.error(err);
+        logger.error(err);
         process.exit(1);
       }
       logger.info(`Server is now listening on ${address}`);

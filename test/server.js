@@ -1,5 +1,6 @@
 const { expect } = require('chai');
 const buildFastify = require('../server');
+const routes = require('../routes');
 
 describe('Fastify Server Tests', () => {
   let fastify;
@@ -48,7 +49,6 @@ describe('Fastify Server Tests', () => {
     expect(response.statusCode).to.equal(200);
   });
 
-  const routes = require('../routes');
   routes.forEach((route) => {
     it(`should return correct response for ${route.method} ${route.url}`, async () => {
       const response = await fastify.inject({
